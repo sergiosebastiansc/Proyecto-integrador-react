@@ -3,7 +3,10 @@ import './App.css'
 import Header1 from './components/Header1'
 import AdminHeader from './components/AdminHeader'
 import AdminDisponibilidad from './components/AdminDisponibilidad'
+import Registro from './components/Registro'
+import Contacto from './components/Contacto'
 import Footer from './components/Footer'
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,6 +16,8 @@ function App() {
     <Header1/>
     <AdminHeader/>
     <AdminDisponibilidad/>
+    <Registro/>
+    <Contacto/>
     <Footer/>
     </>
   )
