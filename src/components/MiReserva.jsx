@@ -1,4 +1,4 @@
-// Mis Reservas // 
+
 import { useState } from "react";
 
 export default function MyBookingsSection({ bookings = [], onNewBooking }) {
