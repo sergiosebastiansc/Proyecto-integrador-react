@@ -1,12 +1,3 @@
-// ========================================
-// COMPONENTE: CarouselHero
-// OBJETIVO: Mostrar el carrusel de imágenes del home
-// QUÉ TOCAR AQUÍ:
-// - Cambiar imágenes
-// - Cambiar textos de cada slide
-// - Agregar o quitar slides
-// ========================================
-
 function CarouselHero() {
   const slides = [
     {
@@ -32,6 +23,10 @@ function CarouselHero() {
   ];
 
   return (
+    
+    <figure className="strata-container">
+      
+      <div className="stratum stratum-primary">
     <div id="envCarousel" className="carousel slide mt-4" data-bs-ride="carousel">
       <div className="carousel-inner rounded-4 overflow-hidden">
         {slides.map((slide, index) => (
@@ -50,6 +45,8 @@ function CarouselHero() {
           </div>
         ))}
       </div>
+      </div>
+      <div>
 
       <button
         className="carousel-control-prev"
@@ -68,7 +65,9 @@ function CarouselHero() {
       >
         <span className="carousel-control-next-icon"></span>
       </button>
+      </div>
     </div>
+    </figure>
   );
 }
 
