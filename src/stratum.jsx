@@ -1,0 +1,77 @@
+function Stratum() {
+  return (
+    <figure className="strata-container">
+      <div className="stratum stratum-tertiary" />
+      <div className="stratum stratum-secondary" />
+      <div className="stratum stratum-primary">
+        <div id="envCarousel" className="carousel slide mt-4" data-bs-ride="carousel">
+          <div className="carousel-inner rounded-4 overflow-hidden">
+            <div className="carousel-item active">
+              <img
+                src="https://www.batlleiroig.com/wp-content/uploads/2023/11/bir-batlleiroig-1134-oficinas-llacuna-perspectives01.jpg"
+                className="d-block w-100"
+                alt="Edificio"
+              />
+              <div className="carousel-caption d-none d-md-block">
+                <h6>Edificio Principal</h6>
+              </div>
+            </div>
+
+            <div className="carousel-item">
+              <img
+                src="https://img.freepik.com/foto-gratis/moderno-hotel-lujo-recepcion-oficina-salon-sala-reuniones_105762-1772.jpg?semt=ais_hybrid&w=740&q=80"
+                className="d-block w-100"
+                alt="Recepción"
+              />
+              <div className="carousel-caption d-none d-md-block">
+                <h6>Recepción</h6>
+              </div>
+            </div>
+
+            <div className="carousel-item">
+              <img
+                src="https://images.unsplash.com/photo-1606836576983-8b458e75221d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                className="d-block w-100"
+                alt="Cafetería"
+              />
+              <div className="carousel-caption d-none d-md-block">
+                <h6>Cafetería</h6>
+              </div>
+            </div>
+
+            <div className="carousel-item">
+              <img
+                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+                className="d-block w-100"
+                alt="Zona Networking"
+              />
+              <div className="carousel-caption d-none d-md-block">
+                <h6>Zona de Networking</h6>
+              </div>
+            </div>
+          </div>
+
+          <button
+            className="carousel-control-prev"
+            type="button"
+            data-bs-target="#envCarousel"
+            data-bs-slide="prev"
+          >
+            <span className="carousel-control-prev-icon" aria-hidden="true" />
+          </button>
+
+          <button
+            className="carousel-control-next"
+            type="button"
+            data-bs-target="#envCarousel"
+            data-bs-slide="next"
+          >
+            <span className="carousel-control-next-icon" aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+    </figure>
+  )
+}
+
+export default Stratum;
