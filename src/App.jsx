@@ -1,24 +1,32 @@
+import { useState } from 'react'
 import './App.css'
 import Header1 from './components/Header1'
 import AdminHeader from './components/AdminHeader'
 import AdminDisponibilidad from './components/AdminDisponibilidad'
-import Registro from './components/Registro'
+import Login from './components/Login'
 import Contacto from './components/Contacto'
-import CarouselHero from './components/CarouselHero'
 import Footer from './components/Footer'
-import Home from './home.jsx'
+import BookingSection from './components/reservas'
+import MyBookingsSection from './components/MiReserva'
+import CarouselHero from './components/CarouselHero'
+import Home from './components/Home'
+
 
 function App() {
+  const [count, setCount] = useState(0)
+
   return (
     <>
-      <Header1 />
-      <Home />
-      <AdminHeader />
-      <AdminDisponibilidad />
-      <Registro />
-      <Contacto />
-      <CarouselHero />
-      <Footer />
+    <Header1/>
+    <AdminHeader/>
+    <Home/>
+    <CarouselHero/>
+    <Login/>
+    <BookingSection/>
+    <MyBookingsSection/>
+    <AdminDisponibilidad/>
+     <Contacto/>
+    <Footer/> 
     </>
   )
 }
