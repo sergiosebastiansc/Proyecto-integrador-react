@@ -1,5 +1,7 @@
 // Reservas - 
 import { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 export default function BookingSection({ spaces = [], onSubmit, onViewBookings }) {
     const [form, setForm] = useState({
@@ -19,6 +21,7 @@ export default function BookingSection({ spaces = [], onSubmit, onViewBookings }
     };
 
     return (
+        
         <section id="booking" className="section">
             <header className="section-header">
                 <span className="data-label">MÓDULO DE RESERVA</span>
@@ -107,11 +110,15 @@ export default function BookingSection({ spaces = [], onSubmit, onViewBookings }
                     href="#"
                     onClick={(e) => { e.preventDefault(); onViewBookings?.(); }}
                     className="link-accent"
-          >
+          
                     Ver mis reservas &rarr;
-                </a>
+                
             </div>
         </div>
     </section >
+
+    
+  );
+}
   );
 }
