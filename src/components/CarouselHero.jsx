@@ -1,7 +1,7 @@
 function CarouselHero() {
   const slides = [
     {
-      img: "https://www.batlleiroig.com/wp-content/uploads/2023/11/bir-batlleiroig-1134-oficinas-llacuna-perspectives01.jpg",
+      img: "https://www.batlleiroig.com/wp-content/uploads/2022/04/1007-anw-2022-almogavers160-165-a78a1314-1536x1536.jpg",
       title: "Edificio Principal",
       alt: "Edificio"
     },
