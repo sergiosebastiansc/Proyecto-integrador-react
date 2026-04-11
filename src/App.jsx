@@ -10,7 +10,7 @@ import BookingSection from './components/Reservas'
 import MyBookingsSection from './components/MiReserva'
 import CarouselHero from './components/CarouselHero'
 import Home from './components/Home'
-
+import Register from './components/Register'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,6 +26,7 @@ function App() {
     <MyBookingsSection/>
     <AdminDisponibilidad/>
      <Contacto/>
+      <Register/>
     <Footer/> 
     </>
   )
