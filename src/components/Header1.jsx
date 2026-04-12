@@ -1,27 +1,27 @@
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+/* ------------ > import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Header1= () => {
     return (
 <>
 {/* Insercion navbar */}
-<header id="mainNavWrapper">
+/* ------------->  <header id="mainNavWrapper">
   <nav className="navbar navbar-expand-lg" id="mainNav">
     <div className="container-fluid">
 
       {/* <!-- Logo --> */}
-      <a className="navbar-brand logo" href="#" onClick="switchTab('home', event)">
+      /* -------- >  <a className="navbar-brand logo" href="#" onClick="switchTab('home', event)">
         WorkHub<span>.Coworking</span>
       </a>
 
       {/* <!-- Botón hamburguesa --> */}
-      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      /* ----------->  <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
         <span className="navbar-toggler-icon"></span>
       </button>
 
       {/* <!-- Links --> */}
-      <div className="collapse navbar-collapse justify-content-end" id="navbarContent">
+     /*------------> <div className="collapse navbar-collapse justify-content-end" id="navbarContent">
         <ul className="navbar-nav">
 
           <li className="nav-item">
@@ -52,7 +52,7 @@ const Header1= () => {
 </header>
 </>
     )
-}
+} 
  
 
 
