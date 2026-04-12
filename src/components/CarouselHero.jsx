@@ -1,4 +1,4 @@
-function CarouselHero() {
+/* -------------> function CarouselHero() {
   const slides = [
     {
       img: "https://www.batlleiroig.com/wp-content/uploads/2022/04/1007-anw-2022-almogavers160-165-a78a1314-1536x1536.jpg",
