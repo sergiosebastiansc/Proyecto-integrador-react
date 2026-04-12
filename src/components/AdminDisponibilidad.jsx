@@ -3,7 +3,7 @@
 // Los estilos (.strata-grid, .stratum-card, .toggle-switch, etc.)
 // ya están en index.css — no hay que agregar nada de CSS.
 
-import { useState } from 'react'
+/*----------->import { useState } from 'react'
 
 // ─── Datos de espacios (mismo array que app.js original) ─────────────────────
 // Cuando el equipo cree un archivo compartido (ej: src/data/spaces.js),
@@ -68,7 +68,7 @@ export default function AdminDisponibilidad() {
   return (
     <>
       {/* Sección Admin — misma estructura que el HTML original */}
-      <section id="admin" className="section active">
+     /*--------------> <section id="admin" className="section active">
         <header className="section-header">
           <span className="data-label">GESTIÓN DE DISPONIBILIDAD</span>
           <h2>Control de Espacios</h2>
@@ -103,7 +103,7 @@ export default function AdminDisponibilidad() {
       </section>
 
       {/* Toast de notificación */}
-      <Toast message={toast.message} type={toast.type} visible={toast.visible} />
+      /* -------------> <Toast message={toast.message} type={toast.type} visible={toast.visible} />
     </>
   )
 }
