@@ -1,4 +1,4 @@
-import React from 'react';
+/* -----------> import React from 'react';
 
 const Home = () => {
   return (
@@ -6,7 +6,7 @@ const Home = () => {
       <div className="hero-layout">
         <article className="hero-content">
           {/* CORRECCIÓN 1: Estilo como objeto y camelCase */}
-          <span className="data-label" style={{ fontSize: '0.9rem' }}> 
+          /* -----------> <span className="data-label" style={{ fontSize: '0.9rem' }}> 
             LA NUEVA INNOVACIÓN DEL TRABAJO
           </span>
 
@@ -19,7 +19,7 @@ const Home = () => {
           </p>
           
           {/* CORRECCIÓN 2: onClick con función flecha */}
-          <button 
+          /* -------------> <button 
             className="btn-crystal" 
             onClick={(event) => switchTab('booking', event)}
           >
