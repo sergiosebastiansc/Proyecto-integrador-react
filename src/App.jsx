@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import './App.css'
-import Header1 from './components/Header1'
-import AdminHeader from './components/AdminHeader'
-import AdminDisponibilidad from './components/AdminDisponibilidad'
-import Login from './components/Login'
-import Contacto from './components/Contacto'
-import Footer from './components/Footer'
-import BookingSection from './components/Reservas'
-import MyBookingsSection from './components/MiReserva'
-import CarouselHero from './components/CarouselHero'
-import Home from './components/Home'
-import Register from './components/Register'
+import { Routes, Route } from 'react-router-dom'
+import { AppProvider } from './context/AppContext.jsx'
+import { ToastProvider } from './context/ToastContext.jsx'
 
-function App() {
-  const [count, setCount] = useState(0)
+import Navbar from './components/Navbar.jsx'
+import Footer from './components/Footer.jsx'
+import Toast from './components/Toast.jsx'
+import DecorGrid from './components/DecorGrid.jsx'
 
+import Home from './pages/Home.jsx'
+import Booking from './pages/Booking.jsx'
+import MyBookings from './pages/MyBookings.jsx'
+import Contact from './pages/Contact.jsx'
+import Register from './pages/Register.jsx'
+import Admin from './pages/Admin.jsx'
+import Login from './pages/Login.jsx'
+
+export default function App() {
   return (
-    <>
-    <Header1/>
-    <AdminHeader/>
-    <Home/>
-    <CarouselHero/>
-    <Login/>
-    <BookingSection/>
-    <MyBookingsSection/>
-    <AdminDisponibilidad/>
-     <Contacto/>
-      <Register/>
-    <Footer/> 
-    </>
+    <AppProvider>
+      <ToastProvider>
+        <DecorGrid />
+        <Routes>
+          {/* Login — sin Navbar ni Footer */}
+          <Route path="/login" element={
+            <>
+              <Login />
+              <Toast />
+            </>
+          } />
+
+          {/* App principal — con Navbar y Footer */}
+          <Route path="/*" element={
+            <>
+              <Navbar />
+              <main>
+                <Routes>
+                  <Route path="/"            element={<Home />} />
+                  <Route path="/booking"     element={<Booking />} />
+                  <Route path="/my-bookings" element={<MyBookings />} />
+                  <Route path="/contact"     element={<Contact />} />
+                  <Route path="/register"    element={<Register />} />
+                  <Route path="/admin"       element={<Admin />} />
+                </Routes>
+              </main>
+              <Footer />
+              <Toast />
+            </>
+          } />
+        </Routes>
+      </ToastProvider>
+    </AppProvider>
   )
 }
-
-export default App
