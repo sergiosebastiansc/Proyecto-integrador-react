@@ -1,4 +1,4 @@
-const Contacto = ({ activa }) => {
+/* ----------------> const Contacto = ({ activa }) => {
   const handleContact = (event) => {
     event.preventDefault();
     alert("¡Mensaje enviado! Nos pondremos en contacto contigo pronto.");
