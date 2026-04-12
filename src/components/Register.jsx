@@ -1,4 +1,4 @@
-import React from 'react';
+/* ------------> import React from 'react';
 
 const Register = () => {
   const handleRegister = (e) => {
@@ -74,4 +74,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Register; */ 
