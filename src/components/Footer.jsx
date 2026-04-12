@@ -1,7 +1,7 @@
 // Footer.jsx — WorkHub Coworking
 // Los estilos vienen del index.css (ya están definidos por el equipo)
 
-import { useState } from 'react'
+/* ---------> import { useState } from 'react'
 
 const socialLinks = [
   {
@@ -43,7 +43,7 @@ export default function Footer() {
       <div className="footer-content">
 
         {/* Marca */}
-        <div className="footer-brand">
+       /* ----------> <div className="footer-brand">
           <span className="logo">
             WorkHub<span>.Coworking</span>
           </span>
@@ -53,7 +53,7 @@ export default function Footer() {
         </div>
 
         {/* Redes sociales */}
-        <nav aria-label="Redes sociales" className="footer-social">
+        /* -------------------><nav aria-label="Redes sociales" className="footer-social">
           {socialLinks.map(({ href, label, icon }, index) => (
             <a
               key={label}
