@@ -47,7 +47,7 @@ export function AppProvider({ children }) {
 
   function loginUser(email, password) {
     // Por ahora acepta cualquier credencial (preparado para backend)
-    // Cuando tengas backend: reemplaza esto por fetch('/api/auth/login')
+    // Cuando tengamos backend: reemplazar esto por fetch('/api/auth/login')
     if (!email || !password) return { ok: false, message: 'Completa todos los campos' }
     return { ok: true }
   }
