@@ -1,388 +1,280 @@
+# WorkHub Coworking — Sistema de Reservas
 
+![React](https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-6.28-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES2020-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-# 🚀 WorkHub Coworking – Sistema de Gestión de Reservas
+Aplicación web desarrollada como **segunda iteración del sistema digital de reservas para WorkHub Coworking**, construida durante el **Módulo 2 – Fundamentos de React**.
 
-![HTML](https://img.shields.io/badge/HTML5-Structure-orange?style=for-the-badge\&logo=html5)
-![CSS](https://img.shields.io/badge/CSS3-Styling-blue?style=for-the-badge\&logo=css3)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-5-purple?style=for-the-badge\&logo=bootstrap)
-![JavaScript](https://img.shields.io/badge/JavaScript-DOM-yellow?style=for-the-badge\&logo=javascript)
-
-Aplicación web desarrollada como **primera iteración del sistema digital de reservas para WorkHub Coworking**, creada durante el **Módulo 1 – Fundamentos de Desarrollo Front-End**.
-
-El sistema permite visualizar espacios de coworking, gestionar reservas y simular disponibilidad utilizando únicamente **tecnologías de frontend**.
+Esta versión migra la arquitectura de HTML/CSS/JS vanilla a una **Single Page Application (SPA)** con React, React Router y gestión de estado global mediante Context API.
 
 ---
 
-# 📚 Tabla de Contenido
+## Tabla de Contenido
 
-* [Contexto del Proyecto](#contexto-del-proyecto)
-* [Objetivo del Proyecto](#objetivo-del-proyecto)
-* [Tecnologías Utilizadas](#tecnologías-utilizadas)
-* [Arquitectura del Proyecto](#arquitectura-del-proyecto)
-* [Estructura de Carpetas](#estructura-de-carpetas)
-* [Funcionalidades Implementadas](#funcionalidades-implementadas)
-* [Componentes Bootstrap Utilizados](#componentes-bootstrap-utilizados)
-* [Manipulación del DOM](#manipulación-del-dom)
-* [Diseño y UX](#diseño-y-ux)
-* [Cómo ejecutar el proyecto](#cómo-ejecutar-el-proyecto)
-* [Estado del Proyecto](#estado-del-proyecto)
-* [Mejoras Futuras](#mejoras-futuras)
-* [Autores](#autores)
+- [Contexto del Proyecto](#contexto-del-proyecto)
+- [Tecnologías Utilizadas](#tecnologías-utilizadas)
+- [Arquitectura del Proyecto](#arquitectura-del-proyecto)
+- [Estructura de Carpetas](#estructura-de-carpetas)
+- [Páginas y Rutas](#páginas-y-rutas)
+- [Componentes](#componentes)
+- [Context API — Estado Global](#context-api--estado-global)
+- [Cómo Ejecutar el Proyecto](#cómo-ejecutar-el-proyecto)
+- [Estado del Proyecto](#estado-del-proyecto)
+- [Mejoras Futuras](#mejoras-futuras)
+- [Autores](#autores)
 
 ---
-<a name="contexto-del-Proyecto"></a>
 
-# 🧠 Contexto del Proyecto
+## Contexto del Proyecto
 
-**Workhub.Coworking** es una solución digital moderna diseñada para la gestión y reserva de espacios de trabajo profesionales. La plataforma permite a los usuarios optimizar su productividad permitiéndoles alquilar desde cabinas independientes aisladas para máxima concentración hasta zonas de trabajo compartido (hot-desking) para fomentar la colaboración.
+**WorkHub Coworking** es una plataforma digital para la gestión y reserva de espacios de trabajo profesionales. Permite a los usuarios alquilar desde oficinas privadas hasta escritorios compartidos, y a los administradores controlar la disponibilidad en tiempo real.
 
+Esta segunda versión reescribe completamente el frontend con React para lograr:
 
-Actualmente las reservas se gestionan mediante:
-
-* WhatsApp
-* Correos electrónicos
-* Hojas de cálculo
-
-Esto genera problemas como:
-
-* Duplicación de reservas
-* Mala gestión de horarios
-* Dificultad para escalar el servicio
-* Pérdida de información
-
-Por esta razón se plantea el desarrollo de un **sistema web que centralice la gestión de reservas**.
-
-En esta primera fase se desarrolla un **MVP (Minimum Viable Product)** en frontend.
+- Navegación entre páginas sin recargar el navegador (SPA)
+- Estado compartido entre componentes sin duplicar datos
+- Código modular, reutilizable y más fácil de mantener
 
 ---
-<a name="vista-previa"></a>
----
-<a name="objetivo-del-proyecto"></a>
 
-# 🎯 Objetivo del Proyecto
+## Tecnologías Utilizadas
 
+| Tecnología | Versión | Uso |
+|---|---|---|
+| React | 18.3 | Biblioteca principal de UI |
+| React Router DOM | 6.28 | Navegación entre páginas (SPA) |
+| Vite | 5.4 | Bundler y servidor de desarrollo |
+| Context API | (incluido en React) | Estado global de la aplicación |
+| CSS3 | — | Estilos personalizados |
+| Bootstrap 5 | (vía CDN) | Componentes visuales (carrusel) |
 
-Construir una **aplicación web estática** que permita:
-
-✔ Visualizar espacios de coworking
-✔ Reservar espacios de trabajo
-✔ Gestionar reservas creadas
-✔ Simular disponibilidad de espacios
-
-Utilizando:
-
-* HTML semántico
-* CSS personalizado
-* Bootstrap 5
-* JavaScript (DOM)
-
-🔗 *Repositorio oficial:* [https://github.com/sergiosebastiansc/Proyecto-integrador](https://github.com/sergiosebastiansc/Proyecto-integrador)
----
-<a name="tecnologías-utilizadas"></a>
-
-# 🧰 Tecnologías Utilizadas
-
-| Tecnología   | Uso                    |
-| ------------ | ---------------------- |
-| HTML5        | estructura del sitio   |
-| CSS3         | estilos personalizados |
-| Bootstrap 5  | framework de diseño    |
-| JavaScript   | manipulación del DOM   |
-| Google Fonts | tipografía             |
-
-Fuentes utilizadas:
-
-* **Inter**
-* **JetBrains Mono**
+Fuentes utilizadas: **Inter** · **JetBrains Mono**
 
 ---
-<a name="arquitectura-del-proyecto"></a>
 
-# 🏗 Arquitectura del Proyecto
+## Arquitectura del Proyecto
 
-El sistema funciona completamente en el **frontend**.
-
-Los datos se simulan mediante **arrays en JavaScript**.
-
-Ejemplo de datos de espacios:
-
-```javascript
-const spaces = [
-{
-id: 1,
-name: "Suite de Cuarzo",
-type: "Oficina Privada",
-capacity: 4,
-price: "$45/hr",
-available: true
-}
-]
-```
-
-Las reservas se almacenan temporalmente en memoria:
-
-```javascript
-let bookings = []
-```
-
----
-<a name="estructura-de-carpetas"></a>
-
-# 📂 Estructura de Carpetas
+La aplicación funciona completamente en el **frontend**. Los datos (espacios, reservas, usuarios) se almacenan en memoria mediante el **Context API de React**, sin backend ni base de datos en esta versión.
 
 ```
-project-root
-│
-├── index.html
-├── registro.html
-│
-├── css
-│   ├── style.css
-│   └── acceso.css
-│
-├── js
-│   ├── app.js
-│   └── acceso.js
-│
-└── README.md
-```
-
-Descripción:
-
-| Archivo       | Descripción                    |
-| ------------- | ------------------------------ |
-| index.html    | página principal               |
-| registro.html | formulario de acceso           |
-| style.css     | estilos principales            |
-| acceso.css    | estilos del login              |
-| app.js        | lógica del sistema             |
-| acceso.js     | manejo del formulario de login |
-
----
-<a name="funcionalidades-implementadas"></a>
-
-# ⚙ Funcionalidades Implementadas
-
-## 🏠 Página Principal
-
-Incluye:
-
-* Navbar de navegación
-* Hero section
-* Carrusel de imágenes
-* Listado de espacios disponibles
-
-Los espacios se muestran mediante **cards dinámicas generadas con JavaScript**.
-
----
-<a name="panel-de-adminitracion"></a>
-
-# 🏢 Visualización de Espacios
-
-Catálogo interactivo de salas y cabinas disponibles con detalles específicos para cada necesidad.Los espacios disponibles se renderizan dinámicamente:
-
-```javascript
-renderSpaces()
-```
-
-Cada espacio muestra:
-
-* Nombre
-* Tipo de espacio
-* Capacidad
-* Precio
-* Estado de disponibilidad
-
----
-
-# 📅 Sistema de Reservas
-
-Formulario de reserva con selección de fecha y hora, garantizando disponibilidad en tiempo real.
-
-Campos disponibles:
-
-* Nombre del usuario
-* Espacio a reservar
-* Fecha
-* Hora
-
-Evento utilizado:
-
-```javascript
-document.getElementById("booking-form")
-.addEventListener("submit", handleBooking)
-```
-
-Al enviar el formulario:
-
-1. Se captura el evento
-2. Se crea un objeto reserva
-3. Se guarda en el array de reservas
-4. Se muestra confirmación
-5. Se limpia el formulario
-
----
-
-# 📋 Gestión de Reservas
-Sistema de liberación inmediata de espacios para mantener la disponibilidad actualizada.
-
-Los usuarios pueden:
-
-* Ver sus reservas
-* Cancelar reservas existentes
-
-Las reservas se muestran dinámicamente en el DOM.
-
-Ejemplo de estructura:
-
-```
-Reserva
-Espacio
 Usuario
-Fecha
-Hora
-ID de referencia
+  │
+  ▼
+BrowserRouter (GPS de la app)
+  │
+  ▼
+App.jsx (define las rutas)
+  │
+  ├── AppContext   →  espacios, reservas, usuarios
+  └── ToastContext →  notificaciones globales
+```
+
+Cuando el usuario navega a una URL, React Router muestra el componente correspondiente. Ese componente obtiene los datos que necesita del Context sin que nadie se los pase manualmente.
+
+---
+
+## Estructura de Carpetas
+
+```
+src/
+│
+├── main.jsx                  # Punto de entrada — enciende React
+├── App.jsx                   # Define las rutas de la aplicación
+│
+├── context/
+│   ├── AppContext.jsx         # Estado global: espacios, reservas, usuarios
+│   └── ToastContext.jsx       # Estado global: notificaciones toast
+│
+├── pages/                    # Una página por ruta
+│   ├── Home.jsx              # /  →  Portada con carrusel y espacios
+│   ├── Booking.jsx           # /booking  →  Formulario de reserva
+│   ├── MyBookings.jsx        # /my-bookings  →  Mis reservas activas
+│   ├── Contact.jsx           # /contact  →  Formulario de contacto
+│   ├── Register.jsx          # /register  →  Registro de usuario
+│   ├── Login.jsx             # /login  →  Inicio de sesión
+│   └── Admin.jsx             # /admin  →  Panel de administración
+│
+├── components/               # Piezas reutilizables
+│   ├── Navbar.jsx            # Barra de navegación superior
+│   ├── Footer.jsx            # Pie de página
+│   ├── SpaceCard.jsx         # Tarjeta de un espacio
+│   ├── BookingCard.jsx       # Tarjeta de una reserva
+│   ├── Toast.jsx             # Notificación flotante
+│   └── DecorGrid.jsx         # Decoración visual de fondo
+│
+└── css/
+    ├── style.css             # Estilos globales
+    └── acceso.css            # Estilos del login/registro
 ```
 
 ---
-# 🛠️ Autenticación segura
- Registro e inicio de sesión de usuarios para una gestión personalizada y protegida de reservas.
 
- 
+## Páginas y Rutas
+
+| Ruta | Componente | Descripción |
+|---|---|---|
+| `/` | `Home` | Portada con carrusel y catálogo de espacios |
+| `/booking` | `Booking` | Formulario para crear una nueva reserva |
+| `/my-bookings` | `MyBookings` | Lista de reservas activas del usuario |
+| `/contact` | `Contact` | Formulario de contacto con datos de la empresa |
+| `/register` | `Register` | Registro de nueva cuenta |
+| `/login` | `Login` | Inicio de sesión (sin Navbar ni Footer) |
+| `/admin` | `Admin` | Panel para activar/desactivar disponibilidad de espacios |
+
+La ruta `/login` tiene un layout diferente al resto — no muestra Navbar ni Footer, solo el formulario centrado.
+
 ---
-# ⚙ Panel de Administración
 
-Herramientas de gestión para administradores, permitiendo visualizar la ocupación total y optimizar el uso de los recursos del coworking.
+## Componentes
 
-Permite:
+### `Navbar`
+Barra de navegación fija en la parte superior con links a todas las secciones. Visible en todas las páginas excepto `/login`.
 
-* Visualizar espacios
-* Activar o desactivar disponibilidad
+### `Footer`
+Pie de página con información de la empresa. Visible en todas las páginas excepto `/login`.
 
-Esto se controla mediante un **toggle switch**.
+### `SpaceCard`
+Tarjeta individual de un espacio de trabajo. Recibe como prop un objeto `space` y muestra su nombre, tipo, capacidad, precio e imagen.
+
+### `BookingCard`
+Tarjeta individual de una reserva. Muestra el espacio reservado, fecha, hora, usuario y un botón para cancelar.
+
+### `Toast`
+Notificación flotante que aparece y desaparece automáticamente después de 3.5 segundos. Se activa llamando a `showToast(mensaje, tipo)` desde cualquier componente.
+
+### `DecorGrid`
+Elemento visual decorativo de fondo. No contiene lógica de negocio.
+
+---
+
+## Context API — Estado Global
+
+La aplicación utiliza dos contextos para compartir datos entre componentes sin necesidad de pasar props manualmente.
+
+### `AppContext`
+
+Centraliza toda la lógica de negocio de la aplicación.
+
+**Estado que maneja:**
+
+| Estado | Tipo | Descripción |
+|---|---|---|
+| `spaces` | Array | Los 4 espacios de trabajo disponibles |
+| `bookings` | Array | Reservas creadas durante la sesión |
+| `registeredUsers` | Array | Usuarios registrados durante la sesión |
+
+**Funciones disponibles:**
 
 ```javascript
+// Cambia la disponibilidad de un espacio (disponible ↔ ocupado)
 toggleAvailability(id)
+
+// Crea una nueva reserva y la agrega al estado
+addBooking(spaceId, date, time, user)
+
+// Elimina una reserva por su ID
+cancelBooking(bookingId)
+
+// Registra un nuevo usuario (valida email duplicado)
+registerUser(userData)  // → { ok: true } | { ok: false, message }
+
+// Valida credenciales de ingreso
+loginUser(email, password)  // → { ok: true } | { ok: false, message }
+```
+
+**Uso en cualquier componente:**
+
+```javascript
+import { useApp } from '../context/AppContext.jsx'
+
+const { spaces, addBooking } = useApp()
+```
+
+### `ToastContext`
+
+Gestiona las notificaciones visuales de la aplicación.
+
+```javascript
+import { useToast } from '../context/ToastContext.jsx'
+
+const { showToast } = useToast()
+
+showToast('Reserva confirmada', 'success')
+showToast('Las contraseñas no coinciden', 'error')
 ```
 
 ---
-<a name="componentes-bootstrap-utilizados"></a>
 
-# 🧩 Componentes Bootstrap Utilizados
+## Cómo Ejecutar el Proyecto
 
-El proyecto utiliza múltiples componentes del framework.
+**Requisitos previos:** Node.js 18 o superior instalado.
 
-Entre ellos:
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/sergiosebastiansc/Proyecto-integrador-react.git
 
-* Navbar
-* Carousel
-* Cards
-* Buttons
-* Forms
-* Grid System
+# 2. Entrar a la carpeta
+cd Proyecto-integrador-react
 
-Ejemplo de grid:
+# 3. Instalar dependencias
+npm install
 
-```
-container
-row
-col
+# 4. Iniciar el servidor de desarrollo
+npm run dev
 ```
 
----
-<a name="manipulación-del-dom"></a>
+Abrir en el navegador: [http://localhost:5173](http://localhost:5173)
 
-# 🧠 Manipulación del DOM
+**Otros comandos disponibles:**
 
-Durante el proyecto se utilizaron funciones como:
-
-* `getElementById()`
-* `querySelector()`
-* `createElement()`
-* `appendChild()`
-* `innerHTML()`
-* `addEventListener()`
-
-Estas permiten **generar contenido dinámico sin backend**.
-
----
-<a name="Diseño-y-ux"></a>
-# 🎨 Diseño y UX
-
-El diseño del proyecto incluye:
-
-* Interfaz moderna tipo dashboard
-* Animaciones CSS
-* Efectos glassmorphism
-* Sistema de notificaciones toast
-* Layout responsive
-* Tipografía profesional
-
-El objetivo fue crear una **experiencia visual moderna y clara para el usuario**.
-
----
-<a name="cómo-ejecutar-el-proyecto"></a>
-
-# ▶ Cómo ejecutar el proyecto
-
-Si deseas ejecutar este proyecto de forma local, sigue estos pasos:
-
-1.  **Clonar el repositorio:**
-    ```bash
-    git clone [https://github.com/sergiosebastiansc/Proyecto-integrador.git](https://github.com/sergiosebastiansc/Proyecto-integrador.git)
-    ```
-2.  **Navegar a la carpeta del proyecto:**
-    ```bash
-    cd Proyecto-integrador
-    ```
-3.  **Abrir el proyecto:**
-    Puedes abrir el archivo `index.html` directamente en tu navegador o utilizar la extensión **Live Server** en VS Code para una mejor experiencia de desarrollo.
-
-```
-index.html
+```bash
+npm run build    # Genera la versión de producción en /dist
+npm run preview  # Previsualiza la versión de producción localmente
 ```
 
 ---
-<a name="estado-del-proyecto"></a>
 
-# 📌 Estado del Proyecto
+## Estado del Proyecto
 
-✔ MVP funcional completado
-✔ Interfaz responsive
-✔ Sistema de reservas simulado
-
-Actualmente el sistema **no utiliza backend ni base de datos**.
-
----
-<a name="mejoras-futuras"></a>
-
-# 🚧 Mejoras Futuras
-
-En próximas iteraciones se planea implementar:
-
-* Backend con Node.js
-* Base de datos
-* Autenticación de usuarios
-* API REST
-* Persistencia de reservas
-* Panel administrativo avanzado
-* Despliegue en la nube
+- ✅ SPA con React Router y 7 rutas
+- ✅ Estado global con Context API
+- ✅ Sistema de reservas funcional
+- ✅ Panel de administración con toggle de disponibilidad
+- ✅ Registro y login de usuarios (simulado en frontend)
+- ✅ Notificaciones toast globales
+- ✅ Diseño responsive
+- ⏳ Sin backend ni persistencia de datos (los datos se pierden al recargar)
 
 ---
-<a name="autores"></a>
-# 👩‍💻 Autores
 
-Este proyecto fue posible gracias al esfuerzo y dedicación de:
+## Mejoras Futuras
 
-* **Gloria Cornelio** | Frontend |
-* **Rodrigo Contreras** | Frontend |
-* **Sergio Salinas** | Frontend |
-* **Mauricio Diaz** | Frontend |
-* **Valentina Medina** | Frontend |
-* **Marcelo Martinez** | Frontend |
-
+- Integración con backend (Node.js + Express)
+- Base de datos para persistir reservas y usuarios
+- Autenticación real con JWT
+- Rutas protegidas (redirigir a login si no hay sesión)
+- Panel de administración con métricas y estadísticas
+- Envío real del formulario de contacto
+- Despliegue en producción (Vercel / Netlify)
 
 ---
-## 📄 Licencia
 
-Este proyecto es de código abierto. Fue desarrollado con fines educativos en el marco de un bootcamp de desarrollo Fullstack JavaScript.    Siéntase libre de explorarlo, clonarlo y proponer mejoras en su ejecución
+## Autores
+
+Proyecto desarrollado en el marco de un bootcamp de desarrollo Fullstack JavaScript.
+
+| Nombre | Rol |
+|---|---|
+| Gloria Cornelio | Frontend |
+| Rodrigo Contreras | Frontend |
+| Sergio Salinas | Frontend |
+| Mauricio Díaz | Frontend |
+| Valentina Medina | Frontend |
+| Marcelo Martínez | Frontend |
+
+---
+
+*Este proyecto es de código abierto con fines educativos. Siéntete libre de explorarlo, clonarlo y proponer mejoras.*
+
