@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useToast } from '../context/ToastContext.jsx'
+import LocationMap from '../components/LocationMap.jsx'
 
 export default function Contact() {
   const { showToast } = useToast()
@@ -31,10 +32,11 @@ export default function Contact() {
           <h3 className="card-title">WorkHub Coworking</h3>
           <p className="card-desc">Estamos aquí para ayudarte con cualquier pregunta sobre nuestros espacios y servicios.</p>
           <address className="card-meta" style={{ fontStyle: 'normal', flexDirection: 'column', gap: '0.5rem' }}>
-            <span>📍 Calle Principal 123, Ciudad</span>
+            <span>📍 Calle Providencia 351, Santiago, Chile</span>
             <span>📞 +34 900 000 000</span>
             <span>✉ <a href="mailto:hola@workhub.com" style={{ color: 'inherit' }}>hola@workhub.com</a></span>
           </address>
+           <LocationMap/>
         </aside>
 
         <form onSubmit={handleSubmit} style={{ width: '100%' }}>
@@ -52,7 +54,11 @@ export default function Contact() {
           </div>
           <button type="submit" className="btn-primary">ENVIAR MENSAJE</button>
         </form>
+        
       </div>
+     
     </section>
+   
   )
 }
+
