@@ -5,7 +5,7 @@
 ![React Router](https://img.shields.io/badge/React_Router-6.28-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES2020-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-Aplicación web desarrollada como **segunda iteración del sistema digital de reservas para WorkHub Coworking**, construida durante el **Módulo 2 – Fundamentos de React**.
+Aplicación web desarrollada como **segunda iteración del sistema digital de reservas para WorkHub Coworking**, construida durante el **Módulo 3 – Fundamentos de React**.
 
 Esta versión migra la arquitectura de HTML/CSS/JS vanilla a una **Single Page Application (SPA)** con React, React Router y gestión de estado global mediante Context API.
 
@@ -103,6 +103,7 @@ src/
 │   ├── BookingCard.jsx       # Tarjeta de una reserva
 │   ├── Toast.jsx             # Notificación flotante
 │   └── DecorGrid.jsx         # Decoración visual de fondo
+│   └── LocationMap.jsx       # Ubicación de Oficinas, API GoogleMaps
 │
 └── css/
     ├── style.css             # Estilos globales
@@ -147,6 +148,11 @@ Notificación flotante que aparece y desaparece automáticamente después de 3.5
 ### `DecorGrid`
 Elemento visual decorativo de fondo. No contiene lógica de negocio.
 
+### `LocationMap`
+Este componente gestiona la visualización dinámica de la ubicación física de **WorkHub** utilizando la API de Google Maps y hooks modernos de React.
+- **Data Fetching:** Fetch API nativa con patrón `async/await`.
+- **Manejo de Estados:** `useState`, para control de carga (`loading`), errores y datos de ubicación.
+- **Efectos:** `useEffect` para sincronización de datos al montar el componente.
 ---
 
 ## Context API — Estado Global
