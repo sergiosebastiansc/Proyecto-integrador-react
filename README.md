@@ -227,7 +227,9 @@ cd Proyecto-integrador-react
 # 3. Instalar dependencias
 npm install
 
-# 4. Iniciar el servidor de desarrollo
+# 4. npm install react-bootstrap bootstrap
+
+#5. Iniciar el servidor de desarrollo
 npm run dev
 ```
 
