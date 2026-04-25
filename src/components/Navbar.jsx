@@ -1,16 +1,40 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useApp } from '../context/AppContext.jsx'
 import logoIcon from './assets/isotipo.svg'
 
 export default function Navbar() {
   const { pathname } = useLocation()
+  const navigate = useNavigate()
+  const { currentUser, logoutUser } = useApp()
 
-  const links = [
+  const handleLogout = () => {
+    logoutUser()
+    navigate('/')
+  }
+
+  const guestLinks = [
     { to: '/register', label: 'REGÍSTRATE' },
+    { to: '/contact', label: 'CONTACTO' },
+    { to: '/login', label: 'LOGIN' },
+  ]
+
+  const userLinks = [
     { to: '/booking', label: 'RESERVA' },
     { to: '/my-bookings', label: 'MIS RESERVAS' },
     { to: '/contact', label: 'CONTACTO' },
-    { to: '/admin', label: 'ADMIN', muted: true },
+    { to: '/account', label: 'MI CUENTA' },
   ]
+
+  const adminLinks = [
+    { to: '/contact', label: 'CONTACTO' },
+    { to: '/admin', label: 'ADMIN' },
+    { to: '/account', label: 'MI CUENTA' },
+  ]
+
+  let links = guestLinks
+  if (currentUser) {
+    links = currentUser.isAdmin ? adminLinks : userLinks
+  }
 
   return (
     <header id="mainNavWrapper">
@@ -39,13 +63,24 @@ export default function Navbar() {
               {links.map(link => (
                 <li className="nav-item" key={link.to}>
                   <Link
-                    className={`nav-link ${link.muted ? 'text-secondary' : ''} ${pathname === link.to ? 'active-link' : ''}`}
+                    className={`nav-link ${pathname === link.to ? 'active-link' : ''}`}
                     to={link.to}
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
+              {currentUser && (
+                <li className="nav-item">
+                  <button
+                    className="nav-link btn-link"
+                    onClick={handleLogout}
+                    style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+                  >
+                    LOGOUT
+                  </button>
+                </li>
+              )}
             </ul>
           </div>
 
