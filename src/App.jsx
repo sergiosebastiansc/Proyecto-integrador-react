@@ -14,6 +14,7 @@ import Contact from './pages/Contact.jsx'
 import Register from './pages/Register.jsx'
 import Admin from './pages/Admin.jsx'
 import Login from './pages/Login.jsx'
+import Account from './pages/Account.jsx'
 
 export default function App() {
   return (
@@ -41,6 +42,7 @@ export default function App() {
                   <Route path="/contact"     element={<Contact />} />
                   <Route path="/register"    element={<Register />} />
                   <Route path="/admin"       element={<Admin />} />
+                  <Route path="/account"     element={<Account />} />
                 </Routes>
               </main>
               <Footer />
