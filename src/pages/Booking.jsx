@@ -14,7 +14,8 @@ export default function Booking() {
   const [form, setForm] = useState({
     spaceId: availableSpaces[0]?.id ?? '',
     date: '',
-    time: '',
+    startTime: '',
+    endTime: '',
     user: '',
   })
 
@@ -24,9 +25,9 @@ export default function Booking() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    addBooking(form.spaceId, form.date, form.time, form.user)
+    addBooking(form.spaceId, form.date, form.startTime, form.endTime, form.user)
     showToast(`Reserva confirmada para ${form.user}`, 'success')
-    setForm({ spaceId: availableSpaces[0]?.id ?? '', date: '', time: '', user: '' })
+    setForm({ spaceId: availableSpaces[0]?.id ?? '', date: '', startTime: '', endTime: '', user: '' })
   }
 
   return (
@@ -50,14 +51,19 @@ export default function Booking() {
               </select>
             </div>
 
+            <div className="form-group">
+              <label htmlFor="date" className="form-label">Fecha</label>
+              <input type="date" className="form-input" id="date" min={today} value={form.date} onChange={handleChange} required />
+            </div>
+
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
               <div className="form-group">
-                <label htmlFor="date" className="form-label">Fecha</label>
-                <input type="date" className="form-input" id="date" min={today} value={form.date} onChange={handleChange} required />
+                <label htmlFor="startTime" className="form-label">Hora inicio</label>
+                <input type="time" className="form-input" id="startTime" value={form.startTime} onChange={handleChange} required />
               </div>
               <div className="form-group">
-                <label htmlFor="time" className="form-label">Hora</label>
-                <input type="time" className="form-input" id="time" value={form.time} onChange={handleChange} required />
+                <label htmlFor="endTime" className="form-label">Hora fin</label>
+                <input type="time" className="form-input" id="endTime" value={form.endTime} onChange={handleChange} required />
               </div>
             </div>
 
