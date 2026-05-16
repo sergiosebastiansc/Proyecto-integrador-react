@@ -1,17 +1,352 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WorkHub Coworking | El Futuro del Trabajo</title>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaludApp - Agenda Médica</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@300;500;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/plus-jakarta-sans@5.0.19/index.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.0.18/index.min.css">
+    <link rel="stylesheet" href="styles.css ">
+</head>
+
+<body>
+
+    <div class="app-container">
+        <header>
+            <div class="header-top">
+                <span class="date-label" id="current-date"></span>
+                <div class="avatar" onclick="openProfileModal()" title="Perfil de usuario">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <circle cx="12" cy="7" r="4" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+            </div>
+            <h1 id="greeting">Bienvenido, Alex</h1>
+        </header>
+
+        <!-- Page: Agenda -->
+        <div class="page-section active" id="page-agenda">
+            <section class="stagger-1">
+                <h2>Próxima Cita</h2>
+                <div class="vellum-card next-appointment" id="next-apt-card">
+                    <div class="apt-header">
+                        <div>
+                            <span class="apt-time" id="next-apt-time">09:30 — 10:15</span>
+                            <span class="apt-doctor" id="next-apt-doctor">Dr. Julián Valdivieso</span>
+                        </div>
+                        <span class="apt-date-badge" id="next-apt-date">28 Abr</span>
+                    </div>
+                    <p class="apt-meta">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        <span id="next-apt-location">Clínica Santa María • Piso 4</span>
+                    </p>
+                    <div class="apt-actions">
+                        <button class="btn btn-primary" onclick="openScheduleModal()">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 5V19M5 12H19" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            Reagendar
+                        </button>
+                        <button class="btn btn-danger" onclick="cancelNextApt()">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            Cancelar cita
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="stagger-2">
+                <h2>Calendario</h2>
+                <div class="vellum-card">
+                    <div class="calendar-strip" id="calendar-strip"></div>
+                </div>
+            </section>
+
+            <section class="stagger-3">
+                <h2>Mis Citas <span class="count" id="apt-count">0</span></h2>
+                <div class="vellum-card" id="appointments-list"></div>
+            </section>
+        </div>
+
+        <!-- Page: Examenes -->
+        <div class="page-section" id="page-examenes">
+            <section class="stagger-1">
+                <h2>Resultados de Exámenes</h2>
+                <div class="vellum-card" id="exam-list"></div>
+            </section>
+
+            <section class="stagger-2">
+                <h2>Historial</h2>
+                <div class="vellum-card" id="exam-history"></div>
+            </section>
+        </div>
+
+        <!-- Page: Antecedentes -->
+        <div class="page-section" id="page-antecedentes">
+            <section class="stagger-1">
+                <h2>Información Personal</h2>
+                <div class="vellum-card">
+                    <div class="history-grid">
+                        <div class="history-chip">
+                            <span class="card-label">Peso</span>
+                            <span class="value">74.5 kg</span>
+                        </div>
+                        <div class="history-chip">
+                            <span class="card-label">Altura</span>
+                            <span class="value">178 cm</span>
+                        </div>
+                        <div class="history-chip">
+                            <span class="card-label">Sangre</span>
+                            <span class="value">O Rh+</span>
+                        </div>
+                        <div class="history-chip">
+                            <span class="card-label">IMC</span>
+                            <span class="value">23.5</span>
+                        </div>
+                        <div class="history-chip">
+                            <span class="card-label">Alergias</span>
+                            <span class="value">Ninguna</span>
+                        </div>
+                        <div class="history-chip">
+                            <span class="card-label">Tabaco</span>
+                            <span class="value">No</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="stagger-2">
+                <h2>Antecedentes Médicos</h2>
+                <div class="vellum-card" id="medical-history-list"></div>
+            </section>
+
+            <section class="stagger-3">
+                <h2>Medicamentos Actuales</h2>
+                <div class="vellum-card" id="medications-list"></div>
+            </section>
+        </div>
+    </div>
+
+    <!-- FAB -->
+    <button class="fab" onclick="openScheduleModal()" aria-label="Agendar nueva cita">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 5V19M5 12H19" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        Agendar cita
+    </button>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" data-page="page-agenda" onclick="switchPage('page-agenda', this)">
+            <svg viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+            <span>Agenda</span>
+        </button>
+        <button class="nav-item" data-page="page-examenes" onclick="switchPage('page-examenes', this)">
+            <svg viewBox="0 0 24 24">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+            <span>Exámenes</span>
+        </button>
+        <button class="nav-item" data-page="page-antecedentes" onclick="switchPage('page-antecedentes', this)">
+            <svg viewBox="0 0 24 24">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+            </svg>
+            <span>Antecedentes</span>
+        </button>
+    </nav>
+
+    <!-- Schedule Modal -->
+    <div class="modal-overlay" id="schedule-modal" onclick="closeScheduleModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-handle"></div>
+            <button class="close-modal" onclick="closeScheduleModalForce()">
+                <svg viewBox="0 0 24 24">
+                    <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+            <h2 class="modal-title">Agendar Nueva Cita</h2>
+
+            <div class="form-group">
+                <label class="form-label">Centro Médico</label>
+                <select class="form-select" id="center-select">
+                    <option value="">Seleccionar centro médico</option>
+                    <option value="santa-maria">Clínica Santa María</option>
+                    <option value="las-condes">Clínica Las Condes</option>
+                    <option value="indisa">Clínica INDISA</option>
+                    <option value="sanatorium">Clínica del Sur</option>
+                    <option value="universidad">Hospital Clínico Universidad de Chile</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Especialidad</label>
+                <select class="form-select" id="specialty-select" onchange="updateDoctors()">
+                    <option value="">Seleccionar especialidad</option>
+                    <option value="cardiologia">Cardiología</option>
+                    <option value="general">Medicina General</option>
+                    <option value="dermatologia">Dermatología</option>
+                    <option value="odontologia">Odontología</option>
+                    <option value="traumatologia">Traumatología</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Doctor</label>
+                <select class="form-select" id="doctor-select">
+                    <option value="">Selecciona una especialidad primero</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Fecha</label>
+                <input type="date" class="form-input" id="date-input" min="" onchange="updateTimeSlots()">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Horario Disponible</label>
+                <div class="time-slots" id="time-slots">
+                    <div class="time-slot disabled">--:--</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Motivo de consulta (opcional)</label>
+                <input type="text" class="form-input" id="reason-input"
+                    placeholder="Describe brevemente tu consulta...">
+            </div>
+
+            <button class="btn-submit" id="submit-btn" onclick="scheduleAppointment()" disabled>Confirmar Cita</button>
+        </div>
+    </div>
+
+    <!-- Exam Detail Modal -->
+    <div class="modal-overlay" id="exam-modal" onclick="closeExamModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-modal" onclick="closeExamModalForce()">
+                <svg viewBox="0 0 24 24">
+                    <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+            <div id="exam-detail-content"></div>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div class="modal-overlay" id="profile-modal" onclick="closeProfileModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-modal" onclick="closeProfileModalForce()">
+                <svg viewBox="0 0 24 24">
+                    <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                </div>
+                <div>
+                    <div class="profile-name" id="profile-display-name">Alex Morales</div>
+                    <div class="profile-rut" id="profile-display-rut">RUT: 18.456.789-2</div>
+                </div>
+            </div>
+
+            <span class="profile-section-title">Datos Personales</span>
+            <div class="profile-info-grid">
+                <div class="profile-info-item">
+                    <span class="card-label">Nombre</span>
+                    <span class="info-value" id="profile-firstname">Alex</span>
+                </div>
+                <div class="profile-info-item">
+                    <span class="card-label">Apellido</span>
+                    <span class="info-value" id="profile-lastname">Morales</span>
+                </div>
+                <div class="profile-info-item">
+                    <span class="card-label">RUT</span>
+                    <span class="info-value" id="profile-rut">18.456.789-2</span>
+                </div>
+                <div class="profile-info-item">
+                    <span class="card-label">Sector</span>
+                    <span class="info-value" id="profile-sector">Providencia</span>
+                </div>
+            </div>
+
+            <span class="profile-section-title">Información de Cuenta</span>
+
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-input" id="profile-email" value="alex.morales@email.com"
+                    placeholder="tu@email.com">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Nueva Contraseña</label>
+                <div class="password-toggle">
+                    <input type="password" class="form-input" id="profile-password"
+                        placeholder="Dejar vacío para mantener actual" style="padding-right: 48px;">
+                    <button class="toggle-btn" onclick="togglePasswordVisibility()" type="button">
+                        <svg id="eye-icon" viewBox="0 0 24 24">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Confirmar Contraseña</label>
+                <div class="password-toggle">
+                    <input type="password" class="form-input" id="profile-password-confirm"
+                        placeholder="Repite la nueva contraseña" style="padding-right: 48px;">
+                    <button class="toggle-btn" onclick="togglePasswordVisibilityConfirm()" type="button">
+                        <svg id="eye-icon-confirm" viewBox="0 0 24 24">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="profile-error" style="color: #DC2626; font-size: 0.8rem; margin-bottom: 8px; display: none;"></div>
+
+            <button class="btn-save-profile" onclick="saveProfile()">Guardar Cambios</button>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <svg viewBox="0 0 24 24">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round" />
+            <polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span id="toast-text">Acción realizada</span>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
 </html>
